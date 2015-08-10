@@ -110,16 +110,13 @@ It's super easy to use, almost everything is done behind the scenes for you. Her
 
 ```javascript
 // Create Event
-
 twitch_init();
 twitch_stream_get_info("xarrotstudios");
 
 // HTTP Async Event
-
 twitch_async();
 
 // Draw Event
-
 if (twitch_stream_find_value("xarrotstudios","status"))
     draw_text(12,12,"Xarrot Studios is ONLINE!");
 else
