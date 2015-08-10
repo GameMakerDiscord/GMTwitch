@@ -14,7 +14,7 @@ ___
 The first step is really only one line of code, usually in the create event of a controller object.
 No arguments, parameters or requirements. No extensions to setup, no libraries or DLL's. Just one script.
 
-```
+```javascript
 twitch_init();
 ```
 
@@ -30,7 +30,7 @@ You can drop these scripts anywhere in your code, just note that putting them in
 wasteful, but it will probably crash the game/cause unexpected errors. You only need to call each script once
 for it to request the info. Of course you can put them on a timer or use the auto update script I'll cover later.
 
-```
+```javascript
 twitch_stream_get_info( channel_id );
 twitch_stream_get_thumbnail( channel_id, size );
 ```
@@ -60,7 +60,7 @@ that just gets plopped into the HTTP Async event. Set it and forget it. It's com
 script does some dirty stuff with strings and data structures to put up with errors and still keep things running.
 Anyways, it just looks like this:
 
-```
+```javascript
 twitch_async();
 ```
 
@@ -75,7 +75,7 @@ all sorts of different things. You'll find that it's actually a breeze to use on
 It's all packed into one tight script, so I thought this was the best way to keep the whole
 motif of 'simple scripts, simple parameters' going smoothly. Here is said script:
 
-```
+```javascript
 var info = twitch_stream_find_value( channel_id, key );
 ```
 
@@ -104,11 +104,37 @@ each key does and what you should expect to be returned.
 
 ___
 
+**EXAMPLE**
+
+It's super easy to use, almost everything is done behind the scenes for you. Here's a small example, we will see if a stream is online and broadcasting. All we will do is initiallize, request, recieve, then utilize. Check it out:
+
+```javascript
+// Create Event
+
+twitch_init();
+twitch_stream_get_info("xarrotstudios");
+
+// HTTP Async Event
+
+twitch_async();
+
+// Draw Event
+
+if (twitch_stream_find_value("xarrotstudios","status"))
+    draw_text(12,12,"Xarrot Studios is ONLINE!");
+else
+    draw_text(12,12,"Xarrot Studios is OFFLINE!");
+```
+
+Just **seven**, easily digestable lines of code, and you can almost immediately show if the channel is live. No dealing with crazy, messy webs of handles, bloated code or extensions. It's just the bare minimum and I think you'll agree it's all you'll ever need.
+
+___
+
 That's it! Those are the core functions for the API I've written for you guys. Use it, abuse it, fork it,
 spoon it. I don't care. No credit required. Just don't claim this as your own! Now, before you leave, I'll
 list the last of the scripts and give a brief description of each:
 
-```
+```javascript
 // Place in the step event to auto update all active channel info on a timer
 twitch_auto_update();
 
