@@ -47,9 +47,8 @@ if (status == 0) and (result != "")
                     {
                     // online
                     
-                    twitch_parse_data(result);
+                    twitch_parse_data(result,channel_id);
                     
-                    /*
                     var name = twitch_parse_data(result,"display_name");
                     var game = twitch_parse_data(result,"game");
                     var url = twitch_parse_data(result,"url");
@@ -66,7 +65,6 @@ if (status == 0) and (result != "")
                     ds_map_replace(channel_info,"views",views);
                     ds_map_replace(channel_info,"followers",followers);
                     ds_map_replace(channel_info,"thumb_url",thumb_url);
-                    */
                     }
                 break;
                 }

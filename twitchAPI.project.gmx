@@ -14,7 +14,6 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\links.gml</script>
     <scripts name="twitch">
       <script>scripts\twitch_init.gml</script>
       <script>scripts\twitch_parse_data.gml</script>
@@ -32,8 +31,8 @@
       <scripts name="chat">
         <script>scripts\twitch_chat_connect.gml</script>
         <script>scripts\twitch_chat_async.gml</script>
-        <script>scripts\twitch_chat_disconnect.gml</script>
         <script>scripts\twitch_chat_say.gml</script>
+        <script>scripts\twitch_chat_disconnect.gml</script>
       </scripts>
     </scripts>
   </scripts>

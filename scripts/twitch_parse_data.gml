@@ -1,5 +1,4 @@
-/// twitch_parse_data(data);
-// twitch_parse_data(data,id);
+/// twitch_parse_data(data,id);
 
 // this only gets used by the API, you don't use this
 
