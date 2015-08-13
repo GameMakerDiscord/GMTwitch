@@ -146,7 +146,7 @@ ___
 
 **Twitch Chat Functions**
 
-**credit goes to [u/Aidan63](https://www.reddit.com/user/Aidan63) for providing a foundation to these new scripts**
+*credit goes to [u/Aidan63](https://www.reddit.com/user/Aidan63) for providing a foundation to these new scripts*
 
 You can now send and receive chat messages from any Twitch stream using the four new functions added in the latest update:
 
