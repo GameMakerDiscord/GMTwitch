@@ -4,7 +4,7 @@
 
 > What is GMTwitch?
 
-GMTwitch is a lightweight, open source Twitch interface for Game Maker: Studio
+GMTwitch is a lightweight, open source Twitch API wrapper/interface for Game Maker: Studio
 
 > You say lightweight, how complicated is it?
 
@@ -14,7 +14,7 @@ This interface uses only **fourteen** scripts, all vanilla code withouth any ext
 
 Getting stream details is easy as pie as soon as you understand the workflow. It's simply:
 
-**INIT -> REQUEST INFO -> RECEIVE INFO -> UTILIZE INFO**
+**Initiallization -> Request Info -> Receive Info -> Utilize Info**
 
 With the new version, you can even send and receive chat messages to any live stream!
 
@@ -25,7 +25,7 @@ Ready? **Let's go!**
 
 ___
 
-**INIT**
+**Initiallization**
 
 The first step is really only one line of code, usually in the create event of a controller object.
 No arguments, parameters or requirements. No extensions to setup, no libraries or DLL's. Just one script.
@@ -39,7 +39,7 @@ to store information we will request later.
 
 ___
 
-**REQUEST INFO**
+**Request Info**
 
 Next we move on to the part where we ask Twitch for stream details. This only involves two scripts.
 You can drop these scripts anywhere in your code, just note that putting them in the step event is not only
@@ -69,7 +69,7 @@ up to the user on what size thumbnail the server will respond with. That's it fo
 
 ___
 
-**RECEIVE INFO**
+**Receive Info**
 
 This one is the easiest, but the most complex step at the same time. It's easy because it's a single, static script
 that just gets plopped into the HTTP Async event. Set it and forget it. It's complex because the code inside the
@@ -84,7 +84,7 @@ Done. Finished. Complete. Moving on!
 
 ___
 
-**UTILIZE INFO**
+**Utilize Info**
 
 Arguably the hardest step of the whole process, only because we have a bunch of keys to throw at you, and they return
 all sorts of different things. You'll find that it's actually a breeze to use once you take a look at the keys.
@@ -121,7 +121,7 @@ what you should expect to be returned using each key:
 
 ___
 
-**EXAMPLE**
+**Stream Details Example Code**
 
 It's super easy to use, almost everything is done behind the scenes for you. Here's a small example, we will see if a stream is online and broadcasting. All we will do is initiallize, request, recieve, then utilize. Check it out:
 
@@ -179,6 +179,8 @@ no getting around the ban*, and you will have to wait eight more hours to test a
 You just saw the entirety of the new chat functions! Easy and simple!
 
 ___
+
+**Wrapping Up The Wrapper**
 
 That's it! Those are the core functions for the API I've written for you guys. Use it, abuse it, fork it,
 spoon it. I don't care. No credit required. Just don't claim this as your own! Now, before you leave, I'll
