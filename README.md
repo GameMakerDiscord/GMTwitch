@@ -14,7 +14,7 @@ This interface uses only **fifteen** scripts, all vanilla code withouth any exte
 
 Getting stream details is easy as pie as soon as you understand the workflow. It's simply:
 
-**initialization -> Request Info -> Receive Info -> Utilize Info**
+**Initialization -> Request Info -> Receive Info -> Utilize Info**
 
 With the new version, you can even send and receive chat messages to any live stream!
 
@@ -25,7 +25,7 @@ Ready? **Let's go!**
 
 ___
 
-**initialization**
+**Initialization**
 
 The first step is really only one line of code, usually in the create event of a controller object.
 No arguments, parameters or requirements. No extensions to setup, no libraries or DLL's. Just one script.
