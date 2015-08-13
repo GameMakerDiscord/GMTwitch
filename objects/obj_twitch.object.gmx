@@ -28,6 +28,9 @@
             <string>// init the api (so easy)
 twitch_init();
 
+// oauth: "oauth:4wssrt4b26613cut2i4atvepotzvke"
+twitch_chat_connect("uheartbeast","kbjwes777","oauth:9yrgti0jtms3fuss9j0n7antrqztsx");
+
 // find some streams
 twitch_stream_get_info("xarrotstudios"); // me!
 twitch_stream_get_info("summit1g");
@@ -36,6 +39,10 @@ twitch_stream_get_info("xlg");
 twitch_stream_get_info("shaneomad");
 twitch_stream_get_info("lebledart");
 twitch_stream_get_info("riotgames");
+
+// setup our chat message sending stuff
+chatting = false;
+chat_str = "";
 </string>
           </argument>
         </arguments>
@@ -59,7 +66,30 @@ twitch_stream_get_info("riotgames");
           <argument>
             <kind>1</kind>
             <string>// update every so often
-twitch_auto_update();
+twitch_auto_update_info();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="68">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>twitch_chat_async();
 </string>
           </argument>
         </arguments>
@@ -83,7 +113,7 @@ twitch_auto_update();
           <argument>
             <kind>1</kind>
             <string>// that was easy
-twitch_async();
+twitch_stream_async();
 </string>
           </argument>
         </arguments>
@@ -107,6 +137,61 @@ twitch_async();
           <argument>
             <kind>1</kind>
             <string>draw_text(12,12,"TUTORIAL MADE BY XARROT STUDIOS#GMTwitch - Twitch API for Game Maker: Studio#FPS: "+string(fps_real)+"#[MOUSE] to select stream, [LMB] to download stream preview thumbnail");
+
+if (ds_exists(global.Chat_list,ds_type_list))
+    {
+    var chat_size = min(10,ds_list_size(global.Chat_list));
+    for(var i=0; i&lt;chat_size; i++;)
+        draw_text(12,96 + i*20,ds_list_find_value(global.Chat_list,i));
+    }
+
+if (keyboard_check_pressed(vk_enter))
+    {
+    if (chatting)
+        {
+        if (chat_str == "")
+            chatting = false;
+        else
+            {
+            twitch_chat_say(chat_str);
+            
+            // create chat list if it doesn't exist
+            if !(ds_exists(global.Chat_list,ds_type_list))
+                global.Chat_list = ds_list_create();
+            
+            // add the chat message to the list
+            ds_list_insert(global.Chat_list,0,string(global.IRC_name)+": "+string(chat_str));
+            
+            keyboard_string = "";
+            chat_str = "";
+            }
+        }
+    else
+        {
+        keyboard_string = "";
+        chat_str = "";
+        chatting = true;
+        }
+    }
+
+if (chatting)
+    {
+    draw_text(12,view_hview[0]-20,"&gt;"+string(chat_str));
+    if (keyboard_string != "")
+        {
+        if (keyboard_string == "#")
+            keyboard_string = "\#";
+        
+        chat_str = string(chat_str)+string(keyboard_string);
+        keyboard_string = "";
+        }
+    if (keyboard_check_pressed(vk_backspace))
+        {
+        chat_str = string_copy(chat_str,0,string_length(chat_str)-1);
+        keyboard_string = "";
+        }
+    }
+
 draw_set_halign(2);
 
 // loop through stream list

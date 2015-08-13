@@ -14,17 +14,27 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\links.gml</script>
     <scripts name="twitch">
       <script>scripts\twitch_init.gml</script>
-      <script>scripts\twitch_free.gml</script>
-      <script>scripts\twitch_async.gml</script>
-      <script>scripts\twitch_auto_update.gml</script>
-      <script>scripts\twitch_update.gml</script>
       <script>scripts\twitch_parse_data.gml</script>
-      <script>scripts\twitch_stream_get_info.gml</script>
-      <script>scripts\twitch_stream_get_thumbnail.gml</script>
-      <script>scripts\twitch_stream_find_value.gml</script>
-      <script>scripts\twitch_stream_remove.gml</script>
+      <script>scripts\twitch_log.gml</script>
+      <script>scripts\twitch_free.gml</script>
+      <scripts name="stream">
+        <script>scripts\twitch_stream_get_info.gml</script>
+        <script>scripts\twitch_stream_get_thumbnail.gml</script>
+        <script>scripts\twitch_auto_update_info.gml</script>
+        <script>scripts\twitch_update_info.gml</script>
+        <script>scripts\twitch_stream_async.gml</script>
+        <script>scripts\twitch_stream_find_value.gml</script>
+        <script>scripts\twitch_stream_remove.gml</script>
+      </scripts>
+      <scripts name="chat">
+        <script>scripts\twitch_chat_connect.gml</script>
+        <script>scripts\twitch_chat_async.gml</script>
+        <script>scripts\twitch_chat_disconnect.gml</script>
+        <script>scripts\twitch_chat_say.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <objects name="objects">

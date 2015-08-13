@@ -17,9 +17,7 @@ for(var i=0; i<ds_map_size(global.Stream_list); i++;)
         if (spr != undefined)
             {
             if (sprite_exists(spr))
-                {
                 sprite_delete(spr);
-                }
             }
         
         ds_map_destroy(channel_info);
