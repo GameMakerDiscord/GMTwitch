@@ -1,11 +1,13 @@
 # GMTwitch
 Lightweight, open source Twitch interface for Game Maker: Studio
 
-This interface uses only ten scripts, all vanilla code withouth any extensions or included files.
+This interface uses only fourteen scripts, all vanilla code withouth any extensions or included files.
 
 Using these scripts is simple, as soon as you understand the workflow. It's simply:
 
 **INIT -> REQUEST INFO -> RECEIVE INFO -> UTILIZE INFO**
+
+**UPDATE:** Added the ability to chat using four new functions described at the bottom of this doc!
 
 ___
 
@@ -124,6 +126,40 @@ else
 ```
 
 Just **seven**, easily digestable lines of code, and you can almost immediately show if the channel is live. No dealing with crazy, messy webs of handles, bloated code or extensions. It's just the bare minimum and I think you'll agree it's all you'll ever need.
+
+___
+
+**Twitch Chat Functions**
+
+You can now send and receive chat messages from any Twitch stream using the four new functions added in the latest update:
+
+```
+// connects to a Twitch IRC chat channel
+twitch_chat_connect( channel_id, username, oauth);
+
+// receives data in the Networking Async event
+twitch_chat_async();
+
+// allows you to send a string as a chat message
+twitch_chat_say( string );
+
+// disconnects from a connected chat channel
+twitch_chat_disconnect();
+```
+
+Using these functions are covered in the source of the example, and they are very self explanitory, so I won't go
+through any examples or get into details with these. All chat messages are stores in a single list, even the chat
+messages you send yourself. That's pretty much the gist of it. What I will go on to say is that to connect
+to a Twitch IRC channel, you must have *two previously created resources* that can't be created
+through the scope of my scripts. The first is a **valid Twitch user account**. That's the simple part.
+The second half, involves getting an **Oauth token** for the Twitch user account you will be connecting
+to the chat with. You can get a working Oauth token here: http://www.twitchapps.com/tmi/
+
+One thing to note: sending more than [20 messages to a stranger's chat] or [100 messages to your own stream's chat]
+will **ban you for 8 hours from all Twitch IRC activity**. So be careful when testing these new chat scripts. *There is
+no getting around the ban*, and you will have to wait eight more hours to test again. Test wisely!
+
+You just saw the entirety of the new chat functions! Easy and simple!
 
 ___
 
