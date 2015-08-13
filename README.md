@@ -2,13 +2,21 @@
 
 <b><span style="color:#00DD00;">MAJOR UPDATE:</span></b> Added the ability to chat using four new functions described at the bottom of this doc!
 
-Lightweight, open source Twitch interface for Game Maker: Studio
+> What is GMTwitch?
+
+GMTwitch is a lightweight, open source Twitch interface for Game Maker: Studio
+
+> You say lightweight, how complicated is it?
 
 This interface uses only **fourteen** scripts, all vanilla code withouth any extensions or included files.
 
-Using these scripts is simple, as soon as you understand the workflow. It's simply:
+> How do I use these scripts?
+
+Getting stream details is easy as pie as soon as you understand the workflow. It's simply:
 
 **INIT -> REQUEST INFO -> RECEIVE INFO -> UTILIZE INFO**
+
+With the new version, you can even send and receive chat messages to any live stream!
 
 ___
 
