@@ -182,7 +182,7 @@ ___
 
 **Wrapping Up The Wrapper**
 
-That's it! Those are the core functions for the API I've written for you guys. Use it, abuse it, fork it,
+That's it! Those are the core functions used to wrap up the API nice and neat for you guys. Use it, abuse it, fork it,
 spoon it. I don't care. No credit required. Just don't claim this as your own! Now, before you leave, I'll
 list the last of the scripts and give a brief description of each:
 
