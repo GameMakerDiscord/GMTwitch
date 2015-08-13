@@ -8,7 +8,7 @@ GMTwitch is a lightweight, open source Twitch API wrapper/interface for Game Mak
 
 > You say lightweight, how complicated is it?
 
-This interface uses only **fourteen** scripts, all vanilla code withouth any extensions or included files.
+This interface uses only **fifteen** scripts, all vanilla code withouth any extensions or included files.
 
 > How do I use these scripts?
 
