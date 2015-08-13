@@ -1,4 +1,7 @@
 # GMTwitch
+
+<b><span style="color:#00DD00;">MAJOR UPDATE:</span></b> Added the ability to chat using four new functions described at the bottom of this doc!
+
 Lightweight, open source Twitch interface for Game Maker: Studio
 
 This interface uses only **fourteen** scripts, all vanilla code withouth any extensions or included files.
@@ -6,8 +9,6 @@ This interface uses only **fourteen** scripts, all vanilla code withouth any ext
 Using these scripts is simple, as soon as you understand the workflow. It's simply:
 
 **INIT -> REQUEST INFO -> RECEIVE INFO -> UTILIZE INFO**
-
-**UPDATE:** Added the ability to chat using four new functions described at the bottom of this doc!
 
 ___
 
@@ -131,6 +132,8 @@ Just **seven**, easily digestable lines of code, and you can almost immediately 
 ___
 
 **Twitch Chat Functions**
+
+**credit goes to [u/Aidan63](https://www.reddit.com/user/Aidan63) for providing a foundation to these new scripts**
 
 You can now send and receive chat messages from any Twitch stream using the four new functions added in the latest update:
 
