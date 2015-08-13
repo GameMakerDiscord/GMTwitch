@@ -18,6 +18,11 @@ Getting stream details is easy as pie as soon as you understand the workflow. It
 
 With the new version, you can even send and receive chat messages to any live stream!
 
+Below, I'm going to initially go into detail on the process of how to get the details of any live stream using
+GMTwitch in your own project. I'll even give you a quick code example. Then I'll quickly go over the chat functions.
+
+Ready? **Let's go!**
+
 ___
 
 **INIT**
