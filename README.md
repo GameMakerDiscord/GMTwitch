@@ -1,7 +1,7 @@
 # GMTwitch
 Lightweight, open source Twitch interface for Game Maker: Studio
 
-This interface uses only fourteen scripts, all vanilla code withouth any extensions or included files.
+This interface uses only **fourteen** scripts, all vanilla code withouth any extensions or included files.
 
 Using these scripts is simple, as soon as you understand the workflow. It's simply:
 
@@ -75,7 +75,7 @@ ___
 Arguably the hardest step of the whole process, only because we have a bunch of keys to throw at you, and they return
 all sorts of different things. You'll find that it's actually a breeze to use once you take a look at the keys.
 It's all packed into one tight script, so I thought this was the best way to keep the whole
-motif of 'simple scripts, simple parameters' going smoothly. Here is said script:
+motif of 'simple scripts, simple parameters' going smoothly. Here is the mentioned script:
 
 ```javascript
 var info = twitch_stream_find_value( channel_id, key );
@@ -85,12 +85,13 @@ Again, you have your *channel_id* handle, but now we are using a key to indentif
 this is the first script we've covered that has a return value. Let's see if I can cover this stuff in an neat way.
 The return value is the data you want that has already been picked up by the *twitch_async()* script. It was already
 stored (if you did everything right, come on there's no way to screw this up) and now we are just using this
-newly acquired tool to seamlessly extract the information. If the info has not made it to us yet, say we forgot to
-request the info in the first place or there's heavy traffic and we experience a delay; the return value will
-be a constant Game Maker recognizes as *undefined*. So, typically you would make sure to do a quick check before you
-compare anything, by making sure it's not an undefined value. If we didn't have any delays and we remembered to
-write our code to request the info in the first place, we did good, so the following table will kindly explain what
-each key does and what you should expect to be returned.
+newly acquired tool to seamlessly extract the information. If the info has not made it to us yet, (for example
+we forgot to request the info in the first place or there's heavy traffic and we experience a delay) the return value
+will be a constant Game Maker recognizes as *undefined*. So, typically you would make sure to do a quick check before
+you compare anything, by making sure it's not an undefined value. If we didn't have any delays and we remembered to
+write our code to request the info in the first place, we did great! All of the stream's details are ready for us to
+access. But how do we access those details? Keys! The following table will kindly explain what each key does and
+what you should expect to be returned using each key:
 
 | Key           | Returns       | Return Type  |
 |:-------------:|:-------------:|:-----:|
@@ -148,7 +149,7 @@ twitch_chat_disconnect();
 ```
 
 Using these functions are covered in the source of the example, and they are very self explanitory, so I won't go
-through any examples or get into details with these. All chat messages are stores in a single list, even the chat
+through any examples or get into details with these. All chat messages are stored in a single list, even the chat
 messages you send yourself. That's pretty much the gist of it. What I will go on to say is that to connect
 to a Twitch IRC channel, you must have *two previously created resources* that can't be created
 through the scope of my scripts. The first is a **valid Twitch user account**. That's the simple part.
