@@ -150,7 +150,7 @@ ___
 
 You can now send and receive chat messages from any Twitch stream using the four new functions added in the latest update:
 
-```
+```javascript
 // connects to a Twitch IRC chat channel
 twitch_chat_connect( channel_id, username, oauth);
 
