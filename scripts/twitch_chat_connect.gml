@@ -12,7 +12,9 @@ global.IRC_oauth   = argument2;
 
 // remove old chats if they exist
 if (ds_exists(global.Chat_list,ds_type_list))
-    ds_list_destroy(global.Chat_list);
+    ds_list_clear(global.Chat_list);
+else
+    global.Chat_list = ds_list_create();
 
 // create the tcp socket we will connect with
 if (global.IRC_socket == -1)

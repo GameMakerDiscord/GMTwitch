@@ -20,5 +20,7 @@ buffer_write(send_buff,buffer_string,string(send_str) + string(chr(13) + chr(10)
 network_send_raw(global.IRC_socket,send_buff,buffer_tell(send_buff));
 buffer_delete(send_buff);
 
+ds_list_add(global.Chat_list,string(global.IRC_name)+": "+string(argument0));
+
 twitch_log("Chat message sent!");
 twitch_log(string(global.IRC_name)+": "+string(argument0) + chr(10));

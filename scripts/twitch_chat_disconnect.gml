@@ -1,10 +1,10 @@
 /// twitch_chat_disconnect();
 
 // remove the socket
-if (global.irc_socket > -1)
+if (global.IRC_socket > -1)
     {
-    global.irc_socket = -1;
-    network_destroy(global.irc_socket);
+    global.IRC_socket = -1;
+    network_destroy(global.IRC_socket);
     }
 
 // remove old chats if they exist
