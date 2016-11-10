@@ -15,8 +15,12 @@ for(var i=0; i<ds_map_size(global.Stream_list); i++;)
         }
     
     if (channel_id != undefined)
-        {
-        var req = http_get("https://api.twitch.tv/kraken/streams/"+string(channel_id)+"/");
+        {        
+        var headers = ds_map_create();                                  
+        ds_map_add(headers, "Client-ID", global.Client_ID);
+        ds_map_add(headers, "Accept", "application/vnd.twitchtv.v3+json"); 
+
+        var req = http_request("https://api.twitch.tv/kraken/streams/"+string(channel_id)+"/", "GET", headers, "");
         ds_map_add(global.Update_list,req,channel_id);
         }
     }
