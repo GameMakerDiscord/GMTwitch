@@ -1,6 +1,6 @@
 # GMTwitch
 
-<b><span style="color:#00DD00;">MAJOR UPDATE:</span></b> Each HTTP request to Twitch now requires a Client ID inside the header. Going forward, you will have to supply a Twitch Client ID as an argument with the initialization script: <code>twitch_init(clientID);</code>. See the section on **Initialization** below for instructions for getting a Twitch Client ID for your application.
+<b><span style="color:#00DD00;">MAJOR UPDATE:</span></b> Each HTTP request to Twitch now requires a Client ID inside the header. Going forward, you will have to supply a Twitch Client ID as an argument with the initialization script: ```twitch_init(clientID);```. See the section on **Initialization** below for instructions for getting a Twitch Client ID for your application.
 
 <b><span style="color:#00DD00;">Previous Updates:</span></b> Added the ability to chat using four new functions described at the bottom of this doc!
 
@@ -31,9 +31,9 @@ ___
 
 **Initialization**
 
-<code>
+```
 twitch_init( clientID );
-</code>
+```
 
 
 The first step is really only one line of code, usually in the create event of a controller object.
@@ -47,10 +47,10 @@ ___
 
 **Request Info**
 
-<code>
+```
 twitch_stream_get_info( channel_id );
 twitch_stream_get_thumbnail( channel_id, size );
-</code>
+```
 
 
 Next we move on to the part where we ask Twitch for stream details. This only involves two scripts.
@@ -68,7 +68,7 @@ The first script makes an HTTP GET request to the exposed Twitch API, asking for
 for the channel id provided. This also sets up the data structure to store the payload we are waiting for.
 
 The second script is a little trickier, but not much at all. The only requirement to use the second script is that
-the first script <code>twitch_stream_get_info();</code> must have been called *and* the corresponding data received. You will
+the first script ```twitch_stream_get_info();``` must have been called *and* the corresponding data received. You will
 not get an error calling it before, it just doesn't do anything useful if the preceding script wasn't called.
 Once you have got your info for the stream, and then you request the thumbnail properly, all it does is make a
 new, separate request for a thumbnail in a specified size. You can fiddle with the sizes in that script, it's all
@@ -78,9 +78,9 @@ ___
 
 **Receive Info**
 
-<code>
+```
 twitch_async();
-</code>
+```
 
 
 This one is the easiest. Drop it into the HTTP Async event. Done. Finished. Complete. Moving on!
@@ -89,19 +89,18 @@ ___
 
 **Utilize Info**
 
-<code>
+```
 twitch_stream_find_value( channel_id, key );
-</code>
-
+```
 
 Arguably the hardest step of the whole process, only because we have a bunch of keys to throw at you, and they return
 all sorts of different things. You'll find that it's actually a breeze to use once you take a look at the keys.
 It's all packed into one tight script, so I thought this was the best way to keep the whole
 motif of 'simple scripts, simple parameters' going smoothly. Here is an example of the mentioned script:
 
-<code>
+```
 var info = twitch_stream_find_value( channel_id, key );
-</code>
+```
 
 Again, you have your *channel_id* handle, but now we are using a key to indentify the data we want to retrieve. Also,
 this is the first script we've covered that has a return value. Let's see if I can cover this stuff in an neat way.
@@ -133,9 +132,9 @@ ___
 
 It's super easy to use, almost everything is done behind the scenes for you. Here's a small example, we will see if a stream is online and broadcasting. All we will do is initiallize, request, recieve, then utilize. Check it out:
 
-<code>
+```
 // Create Event
-twitch_init();
+twitch_init(clientID);
 twitch_stream_get_info("xarrotstudios");
 
 // HTTP Async Event
@@ -146,7 +145,7 @@ if (twitch_stream_find_value("xarrotstudios","status"))
     draw_text(12,12,"Xarrot Studios is ONLINE!");
 else
     draw_text(12,12,"Xarrot Studios is OFFLINE!");
-</code>
+```
 
 Just **seven**, easily digestable lines of code, and you can almost immediately show if the channel is live. No dealing with crazy, messy webs of handles, bloated code or extensions. It's just the bare minimum and I think you'll agree it's all you'll ever need.
 
@@ -158,7 +157,7 @@ ___
 
 You can now send and receive chat messages from any Twitch stream using the four new functions added in the latest update:
 
-<code>
+```
 // connects to a Twitch IRC chat channel
 twitch_chat_connect( channel_id, username, oauth);
 
@@ -170,7 +169,7 @@ twitch_chat_say( string );
 
 // disconnects from a connected chat channel
 twitch_chat_disconnect();
-</code>
+```
 
 Using these functions are covered in the source of the example, and they are very self explanitory, so I won't go
 through any examples or get into details with these. All chat messages are stored in a single list, even the chat
@@ -194,7 +193,7 @@ That's it! Those are the core functions used to wrap up the API nice and neat fo
 spoon it. I don't care. No credit required. Just don't claim this as your own! Now, before you leave, I'll
 list the last of the scripts and give a brief description of each:
 
-<code>
+```
 // Place in the step event to auto update all active channel info on a timer
 twitch_auto_update();
 
@@ -209,7 +208,7 @@ twitch_free();
 
 // Used internally. You will probably never use this script, up until the heat death of the universe.
 twitch_parse();
-</code>
+```
 
 ___
 
