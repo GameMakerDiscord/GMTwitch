@@ -35,6 +35,7 @@ ___
 twitch_init( clientID );
 </code>
 
+
 The first step is really only one line of code, usually in the create event of a controller object.
 No extensions to setup, no libraries or DLL's. Just one script.
 
@@ -50,6 +51,7 @@ ___
 twitch_stream_get_info( channel_id );
 twitch_stream_get_thumbnail( channel_id, size );
 </code>
+
 
 Next we move on to the part where we ask Twitch for stream details. This only involves two scripts.
 You can drop these scripts anywhere in your code, just note that putting them in the step event is not only
@@ -80,6 +82,7 @@ ___
 twitch_async();
 </code>
 
+
 This one is the easiest. Drop it into the HTTP Async event. Done. Finished. Complete. Moving on!
 
 ___
@@ -89,6 +92,7 @@ ___
 <code>
 twitch_stream_find_value( channel_id, key );
 </code>
+
 
 Arguably the hardest step of the whole process, only because we have a bunch of keys to throw at you, and they return
 all sorts of different things. You'll find that it's actually a breeze to use once you take a look at the keys.
