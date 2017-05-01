@@ -19,5 +19,9 @@ if (ds_map_find_value(global.Stream_list,argument0) == undefined)
     ds_map_add(map,"thumb",-1);
     }
 
-var req = http_get("https://api.twitch.tv/kraken/streams/"+string(argument0)+"/");
+var headers = ds_map_create(); //List of headers to be sent with the request. Mostly needed for Client ID, but useful for version number and potentialy oauth tokens.
+ds_map_add(headers, "Client-ID", global.Client_ID); //Twitch requires a Client ID
+ds_map_add(headers, "Accept", "application/vnd.twitchtv.v3+json"); //We want v3, it has more stuff
+
+var req = http_request("https://api.twitch.tv/kraken/streams/"+string(argument0)+"/", "GET", headers, "");
 ds_map_add(global.Update_list,req,argument0);

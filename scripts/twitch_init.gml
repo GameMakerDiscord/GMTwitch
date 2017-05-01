@@ -1,10 +1,11 @@
-/// twitch_init();
+/// twitch_init(client ID);
 
 // change these values depending on your program
 global.Update_autochck = false; // auto update stream info
 global.Update_interval = room_speed * 15; // auto update interval
 global.Twitch_debuglog = true; // debug logging
 global.Twitch_debugnum = "";
+global.Client_ID = argument0; 
 
 // initialize Twitch API data
 global.Stream_list = ds_map_create();
