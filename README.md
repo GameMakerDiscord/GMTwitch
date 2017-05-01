@@ -1,6 +1,6 @@
 # GMTwitch
 
-<b><span style="color:#00DD00;">MAJOR UPDATE:</span></b> Each request now requires the Client ID inside the header. So now you have to supply a Client ID as an argument with the <code>twitch_init()</code> script. It will store the Client ID in memory and the other scripts will insert it into the headers of each request for you! [You can create a Client ID here](https://www.twitch.tv/kraken/oauth2/clients/new). Set the redirect to localhost as recommended, then copy the ID from the URL in your browser.
+<b><span style="color:#00DD00;">MAJOR UPDATE:</span></b> Each HTTP request to Twitch now requires a Client ID inside the header. Going forward, you will have to supply a Twitch Client ID as an argument with the initialization script: <code>twitch_init(clientID);</code>. See the section on **Initialization** below for instructions for getting a Twitch Client ID for your application.
 
 <b><span style="color:#00DD00;">Previous Updates:</span></b> Added the ability to chat using four new functions described at the bottom of this doc!
 
@@ -31,29 +31,30 @@ ___
 
 **Initialization**
 
+<code>
+twitch_init( clientID );
+</code>
+
 The first step is really only one line of code, usually in the create event of a controller object.
-No arguments, parameters or requirements. No extensions to setup, no libraries or DLL's. Just one script.
+No extensions to setup, no libraries or DLL's. Just one script.
 
-```javascript
-twitch_init();
-```
+The only value you need to pass into the script to get up and running is a Twitch Client ID. The other scripts will automatically put it into the headers of each request for you! [You can create a Client ID here](https://www.twitch.tv/kraken/oauth2/clients/new). Set the redirect to localhost as recommended, then copy the ID from the URL in your browser.
 
-All this does is initiallize some variables, and more importantly create the necessary data structures
-to store information we will request later.
+*credit goes to the developer [chalenged](https://github.com/chalenged) for creating a pull request to update this API to work with Twitch's new request system*
 
 ___
 
 **Request Info**
 
+<code>
+twitch_stream_get_info( channel_id );
+twitch_stream_get_thumbnail( channel_id, size );
+</code>
+
 Next we move on to the part where we ask Twitch for stream details. This only involves two scripts.
 You can drop these scripts anywhere in your code, just note that putting them in the step event is not only
 wasteful, but it will probably crash the game/cause unexpected errors. You only need to call each script once
 for it to request the info. Of course you can put them on a timer or use the auto update script I'll cover later.
-
-```javascript
-twitch_stream_get_info( channel_id );
-twitch_stream_get_thumbnail( channel_id, size );
-```
 
 > You'll notice both of these scripts require a single, shared parameter: *channel_id*
 > This is simply the unique channel identification handle for the live stream to be hosted on. So, for example, say
@@ -65,7 +66,7 @@ The first script makes an HTTP GET request to the exposed Twitch API, asking for
 for the channel id provided. This also sets up the data structure to store the payload we are waiting for.
 
 The second script is a little trickier, but not much at all. The only requirement to use the second script is that
-the first script *twitch_stream_get_info()* must have been called *and* the corresponding data received. You will
+the first script <code>twitch_stream_get_info();</code> must have been called *and* the corresponding data received. You will
 not get an error calling it before, it just doesn't do anything useful if the preceding script wasn't called.
 Once you have got your info for the stream, and then you request the thumbnail properly, all it does is make a
 new, separate request for a thumbnail in a specified size. You can fiddle with the sizes in that script, it's all
@@ -75,33 +76,32 @@ ___
 
 **Receive Info**
 
-This one is the easiest, but the most complex step at the same time. It's easy because it's a single, static script
-that just gets plopped into the HTTP Async event. Set it and forget it. It's complex because the code inside the
-script does some dirty stuff with strings and data structures to put up with errors and still keep things running.
-Anyways, it just looks like this:
-
-```javascript
+<code>
 twitch_async();
-```
+</code>
 
-Done. Finished. Complete. Moving on!
+This one is the easiest. Drop it into the HTTP Async event. Done. Finished. Complete. Moving on!
 
 ___
 
 **Utilize Info**
 
+<code>
+twitch_stream_find_value( channel_id, key );
+</code>
+
 Arguably the hardest step of the whole process, only because we have a bunch of keys to throw at you, and they return
 all sorts of different things. You'll find that it's actually a breeze to use once you take a look at the keys.
 It's all packed into one tight script, so I thought this was the best way to keep the whole
-motif of 'simple scripts, simple parameters' going smoothly. Here is the mentioned script:
+motif of 'simple scripts, simple parameters' going smoothly. Here is an example of the mentioned script:
 
-```javascript
+<code>
 var info = twitch_stream_find_value( channel_id, key );
-```
+</code>
 
 Again, you have your *channel_id* handle, but now we are using a key to indentify the data we want to retrieve. Also,
 this is the first script we've covered that has a return value. Let's see if I can cover this stuff in an neat way.
-The return value is the data you want that has already been picked up by the *twitch_async()* script. It was already
+The return value is the data you want that has already been picked up by the <code>twitch_async()</code> script. It was already
 stored (if you did everything right, come on there's no way to screw this up) and now we are just using this
 newly acquired tool to seamlessly extract the information. If the info has not made it to us yet, (for example
 we forgot to request the info in the first place or there's heavy traffic and we experience a delay) the return value
@@ -129,7 +129,7 @@ ___
 
 It's super easy to use, almost everything is done behind the scenes for you. Here's a small example, we will see if a stream is online and broadcasting. All we will do is initiallize, request, recieve, then utilize. Check it out:
 
-```javascript
+<code>
 // Create Event
 twitch_init();
 twitch_stream_get_info("xarrotstudios");
@@ -142,7 +142,7 @@ if (twitch_stream_find_value("xarrotstudios","status"))
     draw_text(12,12,"Xarrot Studios is ONLINE!");
 else
     draw_text(12,12,"Xarrot Studios is OFFLINE!");
-```
+</code>
 
 Just **seven**, easily digestable lines of code, and you can almost immediately show if the channel is live. No dealing with crazy, messy webs of handles, bloated code or extensions. It's just the bare minimum and I think you'll agree it's all you'll ever need.
 
@@ -154,7 +154,7 @@ ___
 
 You can now send and receive chat messages from any Twitch stream using the four new functions added in the latest update:
 
-```javascript
+<code>
 // connects to a Twitch IRC chat channel
 twitch_chat_connect( channel_id, username, oauth);
 
@@ -166,7 +166,7 @@ twitch_chat_say( string );
 
 // disconnects from a connected chat channel
 twitch_chat_disconnect();
-```
+</code>
 
 Using these functions are covered in the source of the example, and they are very self explanitory, so I won't go
 through any examples or get into details with these. All chat messages are stored in a single list, even the chat
@@ -190,7 +190,7 @@ That's it! Those are the core functions used to wrap up the API nice and neat fo
 spoon it. I don't care. No credit required. Just don't claim this as your own! Now, before you leave, I'll
 list the last of the scripts and give a brief description of each:
 
-```javascript
+<code>
 // Place in the step event to auto update all active channel info on a timer
 twitch_auto_update();
 
@@ -205,7 +205,7 @@ twitch_free();
 
 // Used internally. You will probably never use this script, up until the heat death of the universe.
 twitch_parse();
-```
+</code>
 
 ___
 
