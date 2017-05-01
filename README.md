@@ -1,8 +1,8 @@
 # GMTwitch
 
-<b><span style="color:#00DD00;">MAJOR UPDATE 2017:</span></b> Each request now requires the Client ID inside the header. So now you have to supply a Client ID as an argument with the <code>twitch_init()</code> script. It will store the Client ID in memory and the other scripts will insert it into the headers of each request for you! [You can create a Client ID here](https://www.twitch.tv/kraken/oauth2/clients/new). Set the redirect to localhost as recommended, then copy the ID from the URL in your browser.
+<b><span style="color:#00DD00;">MAJOR UPDATE:</span></b> Each request now requires the Client ID inside the header. So now you have to supply a Client ID as an argument with the <code>twitch_init()</code> script. It will store the Client ID in memory and the other scripts will insert it into the headers of each request for you! [You can create a Client ID here](https://www.twitch.tv/kraken/oauth2/clients/new). Set the redirect to localhost as recommended, then copy the ID from the URL in your browser.
 
-<b><span style="color:#00DD00;">MAJOR UPDATE 2016:</span></b> Added the ability to chat using four new functions described at the bottom of this doc!
+<span style="color:#00DD00;">Previous Updates:</span> Added the ability to chat using four new functions described at the bottom of this doc!
 
 > What is GMTwitch?
 
