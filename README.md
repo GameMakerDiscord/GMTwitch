@@ -1,5 +1,7 @@
 # GMTwitch
 
+<i>Maintained by: John Wesley AKA kbjwes77</i>
+
 <b><span style="color:#00DD00;">MAJOR UPDATE:</span></b> Each HTTP request to Twitch now requires a Client ID inside the header. Going forward, you will have to supply a Twitch Client ID as an argument with the initialization script: ```twitch_init(clientID);```. See the section on **Initialization** below for instructions for getting a Twitch Client ID for your application.
 
 <b><span style="color:#00DD00;">Previous Updates:</span></b> Added the ability to chat using four new functions described at the bottom of this doc!
