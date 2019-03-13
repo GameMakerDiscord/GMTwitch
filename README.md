@@ -1,4 +1,4 @@
-<i>Maintained by: John Wesley AKA kbjwes77</i>
+<i>Maintained by: kbjwes77</i>
 
 # GMTwitch
 
