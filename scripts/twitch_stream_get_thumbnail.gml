@@ -33,7 +33,7 @@ if (channel_info != undefined)
         thumb_url = string_replace(thumb_url,"{height}",string(th));
         
         // begin thumbnail download request
-        var thm_req = http_get_file(thumb_url,working_directory + "\" + string(argument0)+"-thumb.jpg");
+        var thm_req = http_get_file(thumb_url,working_directory + "\\" + string(argument0)+"-thumb.jpg");
         ds_map_add(global.Thumb_list,thm_req,argument0);
         }
     }
