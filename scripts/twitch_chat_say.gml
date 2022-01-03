@@ -14,7 +14,7 @@ if (global.IRC_socket < 0) or (global.IRC_channel == "") or (string(argument0) =
 var send_str = "PRIVMSG "+string(global.IRC_channel)+" :"+string(argument0);
 
 // write the packet and send it
-var send_buff = buffer_create(8+string_length(send_str),buffer_fixed,1);
+var send_buff = buffer_create(8+string_length(send_str),buffer_grow,1);
 buffer_seek(send_buff,buffer_seek_start,0);
 buffer_write(send_buff,buffer_string,string(send_str) + string(chr(13) + chr(10)));
 network_send_raw(global.IRC_socket,send_buff,buffer_tell(send_buff));
